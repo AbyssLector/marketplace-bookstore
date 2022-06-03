@@ -1,0 +1,11 @@
+diaralley itu marketplace buat jual beli buku entah baru atau bekas. konsepnya sama kek di tokped atau olx. terus fiturnya sama kek yg di ppt. ada regist, login, edit akun, cart/keranjang (menambahkan produk), terus tiap akun bisa upload barang buat dijual, bs membeli/order produk, terus checkout (pilih e-money), user/penjual bs mengirimkan produk (pilih jasa kirim), user/pembeli bs mengkonfirmasi pembelian selesai, dana masuk ke penjual
+
+judul buku, edisi, jenis cover (soft/hard), penulis, tahun terbit, penerbit, kondisi buku, jumlah stok
+
+transaction:
+id, produk_id, user_id, timestamp, amount
+
+diaralley
+diaralley
+diaralley@gmail.com
+08666555444
