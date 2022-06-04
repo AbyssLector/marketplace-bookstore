@@ -12,6 +12,16 @@ router.get('/transaction', [authenticateHeader, authenticateToken], async (req, 
     const seller_transaction = query[0];
     const query2 = await db.promise().query(`SELECT * FROM transaction WHERE user_id=${req.response.user_id}`);
     const buyer_transaction = query2[0];
+    const message = {
+        seller: {
+            accepted_transaction: "dummy",
+            declined_transaction: "dummy"
+        },
+        buyer: {
+            accepted_transaction: "dummy",
+            declined_transaction: "dummy"
+        }
+    }
     return res.status(200).json({
         seller: seller_transaction,
         buyer: buyer_transaction
@@ -36,15 +46,19 @@ router.post('/transaction/:id/:acc', [authenticateHeader, authenticateToken], as
                 return res.status(401).json('Server error');
             }
         });
+        // Send from penampung to seller account
+        //  ...
         return res.status(200).json({ msg: "Transaction accepted" });
     }
-    db.execute(`UPDATE transaction SET isAccepted=2 WHERE transaction_id=${transaction_id}`, (err, result, fields) => {
+    // isAccepted = 0 means rejected
+    db.execute(`UPDATE transaction SET isAccepted=0 WHERE transaction_id=${transaction_id}`, (err, result, fields) => {
         if (err) {
             console.log(err);
             return res.status(401).json('Server error');
         }
     });
-
+    // Send back from penampung to user's
+    // ...
     return res.status(200).json({ msg: "Transaction rejected!" });
 
 });
@@ -75,4 +89,5 @@ router.post('/', authenticateHeader, async (req, res) => {
         });
     });
 });
+
 module.exports = router;
