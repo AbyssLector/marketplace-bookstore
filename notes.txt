@@ -2,10 +2,43 @@ diaralley itu marketplace buat jual beli buku entah baru atau bekas. konsepnya s
 
 judul buku, edisi, jenis cover (soft/hard), penulis, tahun terbit, penerbit, kondisi buku, jumlah stok
 
-transaction:
-id, produk_id, user_id, timestamp, amount
-
+gallecoins:
 diaralley
 diaralley
 diaralley@gmail.com
 08666555444
+1. user bs menambahkan produk
+2. user bs membeli/order produk
+3. user melakukan payment
+4. user/penjual bs mengirimkan produk
+5. user/pembeli bs mengkonfirmasi pembelian selesai
+6. dana masuk ke penjual
+
+Q: Apakah perlu membuat akun penampung milik e-commerce pada setiap e-Money untuk melakukan pembayaran
+A: Tidak perlu pada setiap emoney. akun penampung milik e-commerce cukup pada 1 e-money.
+
+Q: Apakah perlu membuat credential yang berbeda dari credential e money untuk mengakses Marketplacenya?
+A: normalnya mrk 2 entitas yg berbeda. shg akunnya terpisah.
+
+isAccepted :
+NULL = belom di acc penjual
+1 = acc penjual
+2 = ditolak penjual
+3 = dikonfirm pembeli // blom
+
+- register // done
+- login // done
+- add toko // gak perlu, tiap user bisa upload
+- edit (address & status) // skip dulu
+- get sesuai nama // title, author, publisher
+- all // done
+- create // add books
+- update // done
+- get produk // done
+- delete // skip dulu
+- make order // checkout/:id
+- make payment // transaction/:id/:acc
+- pickup // skip
+- ship // skip
+- konfirmasi delivery // sementara skip
+- get history // transaction
